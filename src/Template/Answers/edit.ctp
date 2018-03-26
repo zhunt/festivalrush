@@ -14,6 +14,8 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Answers'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Questions'), ['controller' => 'Questions', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Question'), ['controller' => 'Questions', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
     </ul>
@@ -23,6 +25,7 @@
     <fieldset>
         <legend><?= __('Edit Answer') ?></legend>
         <?php
+            echo $this->Form->control('question_id', ['options' => $questions]);
             echo $this->Form->control('answer');
             echo $this->Form->control('user_id', ['options' => $users]);
         ?>

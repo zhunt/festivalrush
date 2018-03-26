@@ -10,6 +10,8 @@
         <li><?= $this->Html->link(__('New Festival'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Questions'), ['controller' => 'Questions', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Question'), ['controller' => 'Questions', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Venues'), ['controller' => 'Venues', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Venue'), ['controller' => 'Venues', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="festivals index large-9 medium-8 columns content">

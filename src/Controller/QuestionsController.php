@@ -38,7 +38,7 @@ class QuestionsController extends AppController
     public function view($id = null)
     {
         $question = $this->Questions->get($id, [
-            'contain' => ['Users', 'Festivals', 'Venues']
+            'contain' => ['Users', 'Festivals', 'Venues', 'Answers']
         ]);
 
         $this->set('question', $question);

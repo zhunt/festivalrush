@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * Questions Model
  *
  * @property \CakeDC\Users\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
+ * @property |\Cake\ORM\Association\HasMany $Answers
  * @property \App\Model\Table\FestivalsTable|\Cake\ORM\Association\BelongsToMany $Festivals
  * @property \App\Model\Table\VenuesTable|\Cake\ORM\Association\BelongsToMany $Venues
  *
@@ -45,6 +46,9 @@ class QuestionsTable extends Table
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
+        ]);
+        $this->hasMany('Answers', [
+            'foreignKey' => 'question_id'
         ]);
         $this->belongsToMany('Festivals', [
             'foreignKey' => 'question_id',

@@ -9,6 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Answers Model
  *
+ * @property |\Cake\ORM\Association\BelongsTo $Questions
  * @property \CakeDC\Users\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
  *
  * @method \App\Model\Entity\Answer get($primaryKey, $options = [])
@@ -40,6 +41,10 @@ class AnswersTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->belongsTo('Questions', [
+            'foreignKey' => 'question_id',
+            'joinType' => 'INNER'
+        ]);
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
@@ -75,6 +80,7 @@ class AnswersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
+        $rules->add($rules->existsIn(['question_id'], 'Questions'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;

@@ -35,7 +35,7 @@ class FestivalsController extends AppController
     public function view($id = null)
     {
         $festival = $this->Festivals->get($id, [
-            'contain' => ['Questions']
+            'contain' => ['Questions', 'Venues']
         ]);
 
         $this->set('festival', $festival);
@@ -59,7 +59,8 @@ class FestivalsController extends AppController
             $this->Flash->error(__('The festival could not be saved. Please, try again.'));
         }
         $questions = $this->Festivals->Questions->find('list', ['limit' => 200]);
-        $this->set(compact('festival', 'questions'));
+        $venues = $this->Festivals->Venues->find('list', ['limit' => 200]);
+        $this->set(compact('festival', 'questions', 'venues'));
     }
 
     /**
@@ -72,7 +73,7 @@ class FestivalsController extends AppController
     public function edit($id = null)
     {
         $festival = $this->Festivals->get($id, [
-            'contain' => ['Questions']
+            'contain' => ['Questions', 'Venues']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $festival = $this->Festivals->patchEntity($festival, $this->request->getData());
@@ -84,7 +85,8 @@ class FestivalsController extends AppController
             $this->Flash->error(__('The festival could not be saved. Please, try again.'));
         }
         $questions = $this->Festivals->Questions->find('list', ['limit' => 200]);
-        $this->set(compact('festival', 'questions'));
+        $venues = $this->Festivals->Venues->find('list', ['limit' => 200]);
+        $this->set(compact('festival', 'questions', 'venues'));
     }
 
     /**

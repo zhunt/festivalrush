@@ -12,6 +12,8 @@ use Cake\ORM\Entity;
  * @property int $city_id
  *
  * @property \App\Model\Entity\City $city
+ * @property \App\Model\Entity\Festival[] $festivals
+ * @property \App\Model\Entity\Question[] $questions
  */
 class Venue extends Entity
 {
@@ -29,6 +31,8 @@ class Venue extends Entity
         'name' => true,
         'address' => true,
         'city_id' => true,
-        'city' => true
+        'city' => true,
+        'festivals' => true,
+        'questions' => true
     ];
 }

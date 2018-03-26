@@ -92,8 +92,8 @@ return [
         [
             'role' => '*',
             //'plugin' => null,
-            'controller' => ['Cities', 'Countries', 'Venues', 'Festivals'],
-            'action' => ['index', 'add', 'edit']
+            'controller' => ['Cities', 'Countries', 'Venues', 'Festivals', 'Questions', 'Answers'],
+            'action' => ['index', 'add', 'edit', 'view']
         ],
 
     ]

@@ -10,7 +10,8 @@ use Cake\Validation\Validator;
  * Venues Model
  *
  * @property \App\Model\Table\CitiesTable|\Cake\ORM\Association\BelongsTo $Cities
- * @property |\Cake\ORM\Association\BelongsToMany $Questions
+ * @property \App\Model\Table\FestivalsTable|\Cake\ORM\Association\BelongsToMany $Festivals
+ * @property \App\Model\Table\QuestionsTable|\Cake\ORM\Association\BelongsToMany $Questions
  *
  * @method \App\Model\Entity\Venue get($primaryKey, $options = [])
  * @method \App\Model\Entity\Venue newEntity($data = null, array $options = [])
@@ -40,6 +41,11 @@ class VenuesTable extends Table
         $this->belongsTo('Cities', [
             'foreignKey' => 'city_id',
             'joinType' => 'INNER'
+        ]);
+        $this->belongsToMany('Festivals', [
+            'foreignKey' => 'venue_id',
+            'targetForeignKey' => 'festival_id',
+            'joinTable' => 'festivals_venues'
         ]);
         $this->belongsToMany('Questions', [
             'foreignKey' => 'venue_id',

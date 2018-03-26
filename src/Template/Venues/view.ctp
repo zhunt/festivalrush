@@ -13,6 +13,8 @@
         <li><?= $this->Html->link(__('New Venue'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Cities'), ['controller' => 'Cities', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New City'), ['controller' => 'Cities', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Festivals'), ['controller' => 'Festivals', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Festival'), ['controller' => 'Festivals', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Questions'), ['controller' => 'Questions', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Question'), ['controller' => 'Questions', 'action' => 'add']) ?> </li>
     </ul>
@@ -37,6 +39,39 @@
             <td><?= $this->Number->format($venue->id) ?></td>
         </tr>
     </table>
+    <div class="related">
+        <h4><?= __('Related Festivals') ?></h4>
+        <?php if (!empty($venue->festivals)): ?>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th scope="col"><?= __('Id') ?></th>
+                <th scope="col"><?= __('Name') ?></th>
+                <th scope="col"><?= __('Festival Description') ?></th>
+                <th scope="col"><?= __('Festival Start Date') ?></th>
+                <th scope="col"><?= __('Festival End Date') ?></th>
+                <th scope="col"><?= __('Festival Month') ?></th>
+                <th scope="col"><?= __('Festival Logo Image') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
+            </tr>
+            <?php foreach ($venue->festivals as $festivals): ?>
+            <tr>
+                <td><?= h($festivals->id) ?></td>
+                <td><?= h($festivals->name) ?></td>
+                <td><?= h($festivals->festival_description) ?></td>
+                <td><?= h($festivals->festival_start_date) ?></td>
+                <td><?= h($festivals->festival_end_date) ?></td>
+                <td><?= h($festivals->festival_month) ?></td>
+                <td><?= h($festivals->festival_logo_image) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['controller' => 'Festivals', 'action' => 'view', $festivals->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Festivals', 'action' => 'edit', $festivals->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Festivals', 'action' => 'delete', $festivals->id], ['confirm' => __('Are you sure you want to delete # {0}?', $festivals->id)]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+        <?php endif; ?>
+    </div>
     <div class="related">
         <h4><?= __('Related Questions') ?></h4>
         <?php if (!empty($venue->questions)): ?>

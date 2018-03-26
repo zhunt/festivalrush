@@ -21,7 +21,7 @@ class AnswersController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users']
+            'contain' => ['Questions', 'Users']
         ];
         $answers = $this->paginate($this->Answers);
 
@@ -38,7 +38,7 @@ class AnswersController extends AppController
     public function view($id = null)
     {
         $answer = $this->Answers->get($id, [
-            'contain' => ['Users']
+            'contain' => ['Questions', 'Users']
         ]);
 
         $this->set('answer', $answer);
@@ -61,8 +61,9 @@ class AnswersController extends AppController
             }
             $this->Flash->error(__('The answer could not be saved. Please, try again.'));
         }
+        $questions = $this->Answers->Questions->find('list', ['limit' => 200]);
         $users = $this->Answers->Users->find('list', ['limit' => 200]);
-        $this->set(compact('answer', 'users'));
+        $this->set(compact('answer', 'questions', 'users'));
     }
 
     /**
@@ -86,8 +87,9 @@ class AnswersController extends AppController
             }
             $this->Flash->error(__('The answer could not be saved. Please, try again.'));
         }
+        $questions = $this->Answers->Questions->find('list', ['limit' => 200]);
         $users = $this->Answers->Users->find('list', ['limit' => 200]);
-        $this->set(compact('answer', 'users'));
+        $this->set(compact('answer', 'questions', 'users'));
     }
 
     /**
