@@ -89,6 +89,12 @@ return [
             'controller' => ['Pages', 'Landings'],
             'action' => ['index', 'display']
         ],
+        [
+            'role' => '*',
+            //'plugin' => null,
+            'controller' => ['Cities', 'Countries', 'Venues', 'Festivals'],
+            'action' => ['index', 'add', 'edit']
+        ],
 
     ]
 ];
