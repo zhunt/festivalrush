@@ -12,6 +12,10 @@ use App\Controller\AppController;
 class LandingsController extends AppController
 {
 
+    public function beforeFilter($event){
+        $this->Auth->allow('index');
+    }
+
     /**
      * Index method
      *
