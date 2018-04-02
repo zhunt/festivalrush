@@ -90,8 +90,16 @@ return [
             'action' => ['index', 'display']
         ],
         [
-            'role' => '*',
+            'role' => ['user', 'editor'],
             //'plugin' => null,
+            'prefix' => '', // only un-prefixed sections
+            'controller' => ['Cities', 'Countries', 'Venues', 'Festivals', 'Questions', 'Answers'],
+            'action' => ['index', 'add', 'edit', 'view']
+        ],
+        [
+            'role' => ['editor'],
+            //'plugin' => null,
+            'prefix' => 'admin', // editor has access to backend (/admin/ section)
             'controller' => ['Cities', 'Countries', 'Venues', 'Festivals', 'Questions', 'Answers'],
             'action' => ['index', 'add', 'edit', 'view']
         ],

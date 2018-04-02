@@ -74,23 +74,23 @@ class FestivalsTable extends Table
 
         $validator
             ->requirePresence('festival_start_date', 'create')
-            ->notEmpty('festival_start_date');
+            ->allowEmpty('festival_start_date');
 
         $validator
             ->requirePresence('festival_end_date', 'create')
-            ->notEmpty('festival_end_date');
+            ->allowEmpty('festival_end_date');
 
         $validator
             ->scalar('festival_month')
             ->maxLength('festival_month', 255)
             ->requirePresence('festival_month', 'create')
-            ->notEmpty('festival_month');
+            ->allowEmpty('festival_month');
 
         $validator
             ->scalar('festival_logo_image')
             ->maxLength('festival_logo_image', 255)
             ->requirePresence('festival_logo_image', 'create')
-            ->notEmpty('festival_logo_image');
+            ->allowEmpty('festival_logo_image');
 
         return $validator;
     }

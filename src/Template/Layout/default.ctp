@@ -29,6 +29,8 @@
         .upcoming-festivals .card-header { width: 100%}
 
         footer { }
+
+        /* green: 8bc34a , metal blue: 607d8b */
     </style>
 
 

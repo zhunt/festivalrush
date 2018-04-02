@@ -15,7 +15,7 @@
         <li><?= $this->Html->link(__('List Questions'), ['controller' => 'Questions', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Question'), ['controller' => 'Questions', 'action' => 'add']) ?></li>
 
-        <li><?= $this->User->logout(); ?></li>
+
     </ul>
 </nav>
 <div class="venues index large-9 medium-8 columns content">

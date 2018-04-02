@@ -23,6 +23,7 @@ use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
 
+
 /**
  * The default class to use for all routes
  *
@@ -74,6 +75,15 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->fallbacks(DashedRoute::class);
 });
+
+Router::prefix('admin', function ($routes) {
+    // All routes here will be prefixed with `/admin`
+    // And have the prefix => admin route element added.
+    $routes->connect('/', ['controller' => 'Landings', 'action' => 'index']);
+
+    $routes->fallbacks(DashedRoute::class);
+});
+
 
 /**
  * Load all plugin routes. See the Plugin documentation on
