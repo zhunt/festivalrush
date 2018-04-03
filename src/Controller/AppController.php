@@ -17,6 +17,14 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 
+
+
+use CakeDC\Users\Controller\Component\UsersAuthComponent;
+use CakeDC\Users\Controller\Traits\LoginTrait;
+use CakeDC\Users\Controller\Traits\RegisterTrait;
+use RestApi\Utility\JwtToken;
+
+
 /**
  * Application Controller
  *
@@ -52,11 +60,26 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
+
+
     }
 
     public function beforeFilter(Event $event)
     {
         $this->Auth->allow([ 'view', 'display']);
+
+        $this->getEventManager()->on(UsersAuthComponent::EVENT_AFTER_LOGIN, function () {
+
+            $email = $this->request->session()->read('Auth.User.email');
+            $userName = $this->request->session()->read('Auth.User.username');
+            $payload = ['email' => $email, 'name' => $userName];
+            $token = JwtToken::generateToken($payload);
+
+            $this->request->session()->write('Auth.User.api_token', $token);
+
+
+        });
+
     }
 
 }
