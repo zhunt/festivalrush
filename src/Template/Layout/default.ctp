@@ -44,5 +44,21 @@
 <?= $this->Flash->render() ?>
 
 <?= $this->fetch('content') ?>
+
+<!-- Javascript -->
+<script type="text/javascript" src="/assets/plugins/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/popper.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="/assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- blog specific js starts -->
+<script type="text/javascript" src="/assets/plugins/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="/assets/js/blog.js"></script>
+<!-- blog specific js ends -->
+
+<script type="text/javascript" src="/assets/js/main.js"></script>
+
 </body>
 </html>

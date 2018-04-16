@@ -230,3 +230,5 @@ return [
     //etc
 ];
 */
+
+Plugin::load('Bootstrap');

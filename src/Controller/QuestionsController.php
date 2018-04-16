@@ -13,6 +13,13 @@ use App\Controller\AppController;
 class QuestionsController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Security');
+    }
+
+
     /**
      * Index method
      *
@@ -49,6 +56,8 @@ class QuestionsController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
+
+    // ask a question
     public function add()
     {
         $question = $this->Questions->newEntity();
@@ -64,8 +73,11 @@ class QuestionsController extends AppController
         $users = $this->Questions->Users->find('list', ['limit' => 200]);
         $festivals = $this->Questions->Festivals->find('list', ['limit' => 200]);
         $venues = $this->Questions->Venues->find('list', ['limit' => 200]);
-        $this->set(compact('question', 'users', 'festivals', 'venues'));
+
+        $currentUser = $this->request->session()->read('Auth.User.id');
+        $this->set(compact('question', 'users', 'festivals', 'venues', 'currentUser'));
     }
+
 
     /**
      * Edit method
